@@ -1,0 +1,134 @@
+@import "normalize";
+$error_color: #c1392b;
+$safety_black: #3d4c59;
+$safety_blue_link: #3c7fe7;
+
+// Box sizing
+*, *:before, *:after {
+	@include box-sizing(border-box);
+}
+
+body {
+	font-family: arial, helvetica, sans-serif;
+	line-height: 26px;
+	color: $safety_black;
+	margin: 20px;
+}
+
+.main {
+	width: 600px;
+	margin: auto;
+
+	h2 {
+		clear: both;
+		margin: 0;
+		padding: 20px 0 0 0;
+	}
+
+	ul {
+		margin-top: 0;
+	}
+
+	li {
+		padding-bottom: 10px;
+	}
+}
+
+form {
+	margin: auto;
+	width: 620px;
+
+	// Validation classes
+	.error, .highlight_error {
+		color: $error_color;
+	}
+
+	input[type="text"], input[type="tel"] {
+		padding: 3px 8px 4px;
+		border: 1px solid $safety_blue_link;
+		border-radius: 4px;
+	}
+
+	input[type="text"].error, input[type="tel"].error, textarea.error {
+		border-color: $error_color;
+	}
+
+	input[type="submit"] {
+		float: left;
+		width: 120px;
+		padding: 2px;
+	}
+
+	select {
+		padding: 1px;
+	}
+}
+
+fieldset.city_entry {
+	float: left;
+	width: 420px;
+	border: 0;
+	margin: 0;
+	padding: 0;
+
+	.chosen-container {
+		margin-right: 20px;
+
+		.chosen-single {
+			border-color: $safety_blue_link;
+			height: 28px;
+			width: 100%;
+		}
+
+		&.error a {
+			border-color: $error_color;
+			color: $error_color;
+		}
+	}
+
+	.chosen-container.error a {
+	}
+
+	.chosen-disabled .chosen-single {
+		border-color: $safety_black;
+	}
+
+	select.state_list {
+		width: 70px;
+		margin-right: 20px;
+	}
+
+	.city_input, select.city_list {
+		width: 300px;
+		margin-right: 20px;
+	}
+}
+
+
+/*
+.chosen-container-single .chosen-single {
+	height: 26px;
+}
+*/
+
+// Chosen updates
+.chosen-container {
+	font-size: 16px;
+	max-width: 300px;
+
+	.chosen-results li {
+		padding-top: 0;
+		padding-bottom: 0;
+		line-height: 1.5em;
+	}
+
+	.chosen-drop {
+		border-color: $safety_blue_link;
+		margin-top: -4px;
+		padding-top: 4px;
+	}
+
+	&.error .chosen-drop {
+		border-color: $error_color;
+	}
+}
