@@ -27,12 +27,33 @@ This is an example using Chosen, a jQuery plugin that makes select boxes more us
 <select class="city_list" id="ad_loccityname" name="ad_loccityname">
      <option>Choose a city</option>
 </select>
-<input style="display: none" type="text" class="city_input" id="ad_loccity" name="ad_loccity" placeholder="Enter non-MA/NH city" value="">
+<input style="display: none" type="text" class="city_input" id="ad_loccity" name="ad_loccity" placeholder="Enter non-MA/NH city">
 </fieldset>
 
 <input type="submit" value="submit">
 
 </form>
+
+<br style="clear: both">
+
+<p>
+The example highlights some of the 'gotchas' when using Chosen with the jQuery validation plugin:
+</p>
+<ul>
+<li>You need to explicitly ignore the input text fields that Chosen adds to it's dropdown menus:<br>
+<pre>
+// Used to validate chosen selects
+$( '.city_entry' ).parent( 'form' ).validate().settings.ignore =
+  ":hidden:not(select), .chosen-search input";
+</pre>
+</li>
+<li>Add custom highlight() and unhighlight() routines which show the error on the Chosen element and not the underlying select:<br>
+<pre>
+// Highlight the chosen field (which is next) instead of the select
+$( element ).next().toggleClass( errorClass, highlight );
+</pre>
+</li>
+</ul>
 
 <h2>Resources</h2>
 <ul>
@@ -44,6 +65,72 @@ This is an example using Chosen, a jQuery plugin that makes select boxes more us
 <script type="text/javascript" src="scripts/jquery.validate.min.1.11.1.js"></script>
 <script type="text/javascript" src="chosen.jquery.min.js"></script>
 <script type="text/javascript" src="cities.js"></script>
+
+<script type="text/javascript">
+var labelErrorClass = 'highlight_error';
+
+function get_init_data()
+ {
+  var city, state;
+
+  if (state = GetURLParameter( 'ad_locstate' )) {
+    if (state === 'MA' || state === 'NH') {
+      city = GetURLParameter( 'ad_loccityname' );
+    }
+    else {
+      city = GetURLParameter( 'ad_loccity' );
+    }
+    return { "city" : city, "state": state };
+  }
+
+  // Here are some test initial data sets
+  return { "city" : "NEW BOSTON", "state": "NH" };
+  return { "city" : "Juneau", "state": "AK" };
+  return { "city" : "CAMBRIDGE", "state": "MA" };
+ }
+
+function GetURLParameter( q, s )
+ {
+  s = s ? s : window.location.search;
+  var re = new RegExp( '&' + q + '(?:=([^&]*))?(?=&|$)', 'i' );
+  return (s = s.replace( /^\?/, '&' ).replace( /\+/g, ' ' ).match( re ))
+		? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1]))
+			: undefined;
+ }
+
+function validate_highlight( element, highlight, errorClass, validClass )
+ {
+  if ($( element )[0].validate_highlight) {
+    return $( element )[0].validate_highlight( element, highlight, errorClass, validClass );
+  }
+
+  validate_toggle( element, highlight, errorClass, validClass );
+ }
+
+function validate_toggle( element, highlight, errorClass, validClass )
+ {
+  $( element.form ).find( 'label[for=' + element.id + ']' ).toggleClass( labelErrorClass, highlight );
+  $( element ).toggleClass( errorClass, highlight ).parent( 'label' ).toggleClass( labelErrorClass, highlight );
+ }
+
+$( document ).ready( function() {
+  admo_validator = $( 'form' ).validate({
+	errorPlacement: function( error, element ) {},
+	'highlight': function( element, errorClass, validClass ) {
+       validate_highlight( element, true, errorClass, validClass );
+	},
+	'unhighlight': function (element, errorClass, validClass) {
+       validate_highlight( element, false, errorClass, validClass );
+	}
+  });
+
+  // Initial conditions set through javascript
+  var init_data = get_init_data();
+  if (init_data) {
+    init_state_city( $( '.city_entry' ), init_data.state, init_data.city );
+  }
+});
+</script>
 
 <script type="text/javascript" src="city_entry.js?version=1.1"></script>
 </body>

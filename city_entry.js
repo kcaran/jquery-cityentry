@@ -1,10 +1,23 @@
 /* $Id: city_entry.js,v 1.2 2014/05/06 20:29:39 caran Exp $ */
-var admo_validator;
-var labelErrorClass = 'highlight_error';
 
-function is_ma_nh()
+function init_state_city( $city_entry, state, city )
  {
-  var value = $( '#ad_locstate' ).val();
+  if ($city_entry === null || !state) {
+    return false;
+  }
+
+  $city_entry.children( 'select.state_list' ).val( state ).change().trigger( 'chosen:updated' );
+  if (state === 'MA' || state === 'NH') {
+    $city_entry.children( 'select.city_list' ).val( city ).trigger( 'chosen:updated' );
+  }
+  else {
+    $city_entry.children( 'input.city_input' ).val( city );
+  }
+ }
+
+function is_ma_nh( element )
+ {
+  var value = $( element ).siblings( 'select.state_list' ).val();
   return (value === 'MA' || value === 'NH');
  }
 
@@ -25,57 +38,25 @@ function load_cities( cityentryObj, list )
   $citylist.html( option_html.join( '' ) ).prop( 'disabled', disabled );
  }
 
-function validate_highlight( element, highlight, errorClass, validClass )
- {
-  // Radio buttons
-  if ($( element ).attr( 'name' ) === 'ad_loccityname') {
-    $( element ).next().toggleClass( errorClass, highlight );
-   }
-  else {
-    validate_toggle( element, highlight, errorClass, validClass );
-   }
- }
-
-function validate_toggle( element, highlight, errorClass, validClass )
- {
-  $( element.form ).find( 'label[for=' + element.id + ']' ).toggleClass( labelErrorClass, highlight );
-  $( element ).toggleClass( errorClass, highlight ).parent( 'label' ).toggleClass( labelErrorClass, highlight );
- }
-
 $(document).ready( function() {
+  $( '.city_entry select.city_list' ).rules( 'add', {
+    required: {
+      depends: function( element ) {
+        return is_ma_nh( element );
+      }
+    }
+  });
 
-  admo_validator = $( 'form' ).validate({
-	errorPlacement: function( error, element ) {},
-	'highlight': function( element, errorClass, validClass ) {
-       validate_highlight( element, true, errorClass, validClass );
-	},
-	'unhighlight': function (element, errorClass, validClass) {
-       validate_highlight( element, false, errorClass, validClass );
-	},
-    rules: {
-		ad_loccity: {
-			required: {
-				depends: function( element ) {
-				  return !is_ma_nh();
-				}
-			}
-		},
+  $( '.city_entry input.city_input' ).rules( 'add', {
+    required: {
+      depends: function( element ) {
+          return !is_ma_nh( element );
+      }
+    }
+  });
 
-		ad_loccityname: {
-			required: {
-				depends: function( element ) {
-				  return is_ma_nh();
-				}
-			}
-		},
-
-		ad_locstate: {
-			required: true
-		}
-    },
-	submitHandler: function( form ) {
-      form.submit();
-	},
+  $( '.city_entry select.state_list' ).rules( 'add', {
+    required: true
   });
 
   $( '.city_entry select.city_list' ).chosen().change( function() {
@@ -94,18 +75,27 @@ $(document).ready( function() {
     }
 
    if (city_list) {
-     $( '#ad_loccity' ).hide();
+     $( this ).siblings( 'input.city_input' ).val('').hide();
      load_cities( $( this ).parent(), city_list );
-     $( '#ad_loccityname_chosen' ).show();
+     $( this ).siblings( 'select.city_list' ).next().show();
     }
    else {
-     $( '#ad_loccity' ).show();
-     $( '#ad_loccityname_chosen' ).hide();
+     $( this ).siblings( 'input.city_input' ).show();
+     $( this ).siblings( 'select.city_list' ).next().hide();
     }
-   $( '#ad_loccityname' ).trigger( 'chosen:updated' );
+   $( this ).siblings( 'select.city_list' ).trigger( 'chosen:updated' );
   }).change();
 
+
   // Used to validate chosen selects
-  admo_validator.settings.ignore = ":hidden:not(select), .chosen-search input";
+  $( '.city_entry' ).parent( 'form' ).validate().settings.ignore =
+		":hidden:not(select), .chosen-search input";
+
+  $( '.city_list' ).each( function() {
+    $( this )[0].validate_highlight = function( element, highlight, errorClass, validClass ) {
+      // Highlight the chosen field (which is next) instead of the select
+      $( element ).next().toggleClass( errorClass, highlight );
+    };
+  });
 
 });
