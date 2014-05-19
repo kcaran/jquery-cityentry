@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>chosen.js - State and City Example</title>
+<title>jquery.cityentry.js - Select City and State using chosen.js</title>
 <!-- $Id: index.html,v 1.3 2014/05/07 17:52:09 caran Exp $ -->
 <link href="css/chosen.min.css" rel="stylesheet" type="text/css">
 <link href="css/chosen.custom.css" rel="stylesheet" type="text/css">
@@ -12,10 +12,16 @@
 
 <div class="main">
 
-<h1>Chosen and Validator Example</h1>
+<h1>CityEntry jQuery plugin</h1>
 
 <p>
-This is an example using Chosen, a jQuery plugin that makes select boxes more user-friendly. For Massachusetts and New Hampshire, the user selects a city from a dropdown list. For all other states, they can free-key the city. The example also uses the jQuery validator plugin for validation.
+This is a jQuery plugin for selecting a state and city.  For Massachusetts
+and New Hampshire, the user selects a city from a dropdown list. For all
+other states, they can free-key the city. 
+</p>
+
+<p>
+The plugin relies on Chosen, a jQuery plugin that makes select boxes more user-friendly.  It also uses the jQuery Validation plugin for validation.
 </p>
 
 <form action="#" method="get" autocomplete="off">
@@ -65,6 +71,7 @@ $( element ).next().toggleClass( errorClass, highlight );
 <script type="text/javascript" src="scripts/jquery.validate.min.1.11.1.js"></script>
 <script type="text/javascript" src="chosen.jquery.min.js"></script>
 <script type="text/javascript" src="cities.js"></script>
+<script type="text/javascript" src="jquery.cityentry.js"></script>
 
 <script type="text/javascript">
 var labelErrorClass = 'highlight_error';
@@ -84,9 +91,10 @@ function get_init_data()
   }
 
   // Here are some test initial data sets
+  return { "city" : '', "state" : '' };
   return { "city" : "NEW BOSTON", "state": "NH" };
-  return { "city" : "Juneau", "state": "AK" };
   return { "city" : "CAMBRIDGE", "state": "MA" };
+  return { "city" : "Juneau", "state": "AK" };
  }
 
 function GetURLParameter( q, s )
@@ -125,13 +133,10 @@ $( document ).ready( function() {
   });
 
   // Initial conditions set through javascript
+
   var init_data = get_init_data();
-  if (init_data) {
-    init_state_city( $( '.city_entry' ), init_data.state, init_data.city );
-  }
+  $( '.city_entry' ).cityentry( init_data.state, init_data.city );
 });
 </script>
-
-<script type="text/javascript" src="city_entry.js?version=1.1"></script>
 </body>
 </html>
