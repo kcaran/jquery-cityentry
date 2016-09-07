@@ -64,7 +64,7 @@
    {
     var $citylist = $( cityentryObj ).children( '.city_list' );
 
-    var option_html = [ '<option value="">Chose a city</option>' ];
+    var option_html = [ '<option value="">Choose a city</option>' ];
     var disabled = false;
     for (var i = 0; i < list.length; i++) {
       option_html.push( '<option>', list[i], '</option>' );
