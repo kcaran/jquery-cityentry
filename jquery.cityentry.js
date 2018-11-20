@@ -1,5 +1,10 @@
 /* $Id: jquery.cityentry.js,v 1.4 2014/05/19 18:07:29 caran Exp $ */
+/* global jQuery */
+/* global ma_cities */
+/* global nh_cities */
+
 (function( $ ) {
+  'use strict';
 
   $.fn.cityentry = function( initState, initCity ) {
     var $cityentryObj = this;
@@ -8,23 +13,23 @@
 
     // Define what to do with cities, then call it
     $cityentryObj.children( 'select.state_list' ).chosen().change( function() {
-      state = $( this ).val();
-      city_list = '';
-      if (state == 'MA') {
+      var state = $( this ).val();
+      var city_list = '';
+      if (state === 'MA') {
         city_list = ma_cities;
       }
-      else if (state == 'NH') {
+      else if (state === 'NH') {
         city_list = nh_cities;
       }
 
       if (city_list) {
         $( this ).siblings( 'input.city_input' ).val('').hide();
         load_cities( $cityentryObj, city_list );
-        $( this ).siblings( 'select.city_list' ).next().show();
+        $( this ).siblings( 'select.city_list' ).next( '.chosen-container' ).show();
       }
       else {
         $( this ).siblings( 'input.city_input' ).show();
-        $( this ).siblings( 'select.city_list' ).next().hide();
+        $( this ).siblings( 'select.city_list' ).next( '.chosen-container' ).hide();
       }
 
      $( this ).trigger( 'chosen:updated' );
@@ -109,15 +114,15 @@
     });
 
     $obj.children( '.city_list' ).each( function() {
-      $( this )[0].validate_highlight = function( element, highlight, errorClass, validClass ) {
+      $( this )[0].validate_highlight = function( element, highlight, errorClass ) {
        // Highlight the chosen field (which is next) instead of the select
-       $( element ).next().toggleClass( errorClass, highlight );
+       $( element ).next( '.chosen-container' ).toggleClass( errorClass, highlight );
       };
     });
 
     // Used to validate chosen selects
     $obj.parents( 'form' ).validate().settings.ignore =
-				":hidden:not(select), .chosen-search input";
+				':hidden:not(select), .chosen-search input';
    }
   
 }( jQuery ));

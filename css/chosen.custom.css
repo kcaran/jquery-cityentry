@@ -6,7 +6,7 @@
  * and $rhythm-unit variables. Also, correct text resizing oddly in IE 6/7 when
  * body `font-size` is set using `em` units.
  */
-/* line 106, ../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 106, ../../../../../usr/local/lib/ruby/gems/2.5.0/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
 html {
   font-size: 100%;
   line-height: 1.5em;
@@ -682,45 +682,46 @@ fieldset.city_entry .chosen-container .chosen-single {
   border-color: #3c7fe7;
   height: 28px;
   width: 100%;
+  line-height: 28px;
 }
-/* line 88, ../sass/chosen.custom.scss */
+/* line 89, ../sass/chosen.custom.scss */
 fieldset.city_entry .chosen-container.error a {
   border-color: #c1392b;
   color: #c1392b;
 }
-/* line 97, ../sass/chosen.custom.scss */
+/* line 98, ../sass/chosen.custom.scss */
 fieldset.city_entry .chosen-disabled .chosen-single {
   border-color: #3d4c59;
 }
-/* line 101, ../sass/chosen.custom.scss */
+/* line 102, ../sass/chosen.custom.scss */
 fieldset.city_entry select.state_list {
   width: 70px;
   margin-right: 20px;
 }
-/* line 106, ../sass/chosen.custom.scss */
+/* line 107, ../sass/chosen.custom.scss */
 fieldset.city_entry .city_input, fieldset.city_entry select.city_list {
   width: 300px;
   margin-right: 20px;
 }
 
-/* line 113, ../sass/chosen.custom.scss */
+/* line 114, ../sass/chosen.custom.scss */
 .chosen-container {
   font-size: 16px;
   max-width: 300px;
 }
-/* line 117, ../sass/chosen.custom.scss */
+/* line 118, ../sass/chosen.custom.scss */
 .chosen-container .chosen-results li {
   padding-top: 0;
   padding-bottom: 0;
   line-height: 1.5em;
 }
-/* line 123, ../sass/chosen.custom.scss */
+/* line 124, ../sass/chosen.custom.scss */
 .chosen-container .chosen-drop {
   border-color: #3c7fe7;
   margin-top: -4px;
   padding-top: 4px;
 }
-/* line 129, ../sass/chosen.custom.scss */
+/* line 130, ../sass/chosen.custom.scss */
 .chosen-container.error .chosen-drop {
   border-color: #c1392b;
 }
