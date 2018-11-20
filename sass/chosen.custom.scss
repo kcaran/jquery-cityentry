@@ -1,11 +1,15 @@
 @import "normalize";
+$normalize-vertical-rhythm: true;
+
 $error_color: #c1392b;
 $safety_black: #3d4c59;
 $safety_blue_link: #3c7fe7;
 
+@include normalize();
+
 // Box sizing
 *, *:before, *:after {
-	@include box-sizing(border-box);
+	box-sizing: border-box;
 }
 
 body {
@@ -19,19 +23,14 @@ body {
 	width: 600px;
 	margin: auto;
 
-	h2 {
-		clear: both;
-		margin: 0;
-		padding: 20px 0 0 0;
-	}
-
 	ul {
 		margin-top: 0;
 		padding: 0 0 0 20px;
 	}
 
 	li {
-		padding: 0 0 10px 10px;
+		margin-bottom: 10px;
+		padding-left: 10px;
 	}
 
 	pre {
@@ -76,29 +75,6 @@ fieldset.city_entry {
 	margin: 0;
 	padding: 0;
 
-	.chosen-container {
-		margin-right: 20px;
-
-		.chosen-single {
-			border-color: $safety_blue_link;
-			height: 28px;
-			width: 100%;
-			line-height: 28px;
-		}
-
-		&.error a {
-			border-color: $error_color;
-			color: $error_color;
-		}
-	}
-
-	.chosen-container.error a {
-	}
-
-	.chosen-disabled .chosen-single {
-		border-color: $safety_black;
-	}
-
 	select.state_list {
 		width: 70px;
 		margin-right: 20px;
@@ -111,14 +87,42 @@ fieldset.city_entry {
 }
 
 // Chosen updates
+/*
+.chosen-container {
+
+}
+
+.chosen-disabled .chosen-single {
+	border-color: $safety_black;
+}
+*/
+
 .chosen-container {
 	font-size: 16px;
 	max-width: 300px;
+	margin-right: 20px;
+
+	.chosen-single {
+		border-color: $safety_blue_link;
+		height: 32px;
+		width: 100%;
+		line-height: 32px;
+
+		& div b {
+			background-position: -1px 0px;
+		}
+	}
+
+    &.chosen-with-drop {
+		.chosen-single div b {
+			background-position: -29px 1px;
+		}
+	}
 
 	.chosen-results li {
 		padding-top: 0;
 		padding-bottom: 0;
-		line-height: 1.5em;
+		line-height: 1.65em;
 	}
 
 	.chosen-drop {
@@ -127,7 +131,16 @@ fieldset.city_entry {
 		padding-top: 4px;
 	}
 
-	&.error .chosen-drop {
-		border-color: $error_color;
+	&.error {
+		a {
+			border-color: $error_color;
+			color: $error_color;
+		}
+		.chosen-drop {
+			border-color: $error_color;
+		}
+    	&.chosen-with-drop .chosen-single {
+			border-color: $error_color;
+		}
 	}
 }
