@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-task:scss-compile": "node-sass --source-map true --include-path node_modules/normalize-scss/sass/ sass/ -o css/",
-    "sass:build": "npm-run-all -p build-task:*"
+    "build": "npm-run-all -p build-task:*"
   },
   "repository": {
     "type": "git",
