@@ -4,6 +4,7 @@ $normalize-vertical-rhythm: true;
 $charcoal: #394a59;
 $denim: #0079b6;
 $heather: #aec2cb;
+$shuttle: #51626f;
 $tomato: #c23a28;
 $white: #ffffff;
 
@@ -115,10 +116,16 @@ fieldset.city_entry {
 		}
 	}
 
-	.chosen-results li {
-		padding-top: 0;
-		padding-bottom: 0;
-		line-height: 1.65em;
+	.chosen-results {
+		color: $shuttle;
+		li {
+			padding-top: 0;
+			padding-bottom: 0;
+			line-height: 1.65em;
+			&.highlighted {
+				background: $denim;
+			}
+		}
 	}
 
 	.chosen-drop {
@@ -144,6 +151,7 @@ fieldset.city_entry {
 .chosen-container-single {
 	.chosen-single {
 		background: $white;
+		color: $shuttle;
 		div {
 			width: 24px;
 			b {
