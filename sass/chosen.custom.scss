@@ -1,11 +1,12 @@
-@import "normalize";
+@import "modern-normalize";
 $normalize-vertical-rhythm: true;
 
-$error_color: #c1392b;
-$safety_black: #3d4c59;
-$safety_blue_link: #3c7fe7;
+$charcoal: #394a59;
+$denim: #0079b6;
+$heather: #aec2cb;
+$tomato: #c23a28;
+$white: #ffffff;
 
-@include normalize();
 
 // Box sizing
 *, *:before, *:after {
@@ -15,7 +16,7 @@ $safety_blue_link: #3c7fe7;
 body {
 	font-family: arial, helvetica, sans-serif;
 	line-height: 26px;
-	color: $safety_black;
+	color: $charcoal;
 	margin: 20px;
 }
 
@@ -44,23 +45,28 @@ form {
 
 	// Validation classes
 	.error, .highlight_error {
-		color: $error_color;
+		color: $tomato;
 	}
 
 	input[type="text"], input[type="tel"] {
 		padding: 3px 8px 4px;
-		border: 1px solid $safety_blue_link;
+		border: 1px solid $denim;
 		border-radius: 4px;
 	}
 
 	input[type="text"].error, input[type="tel"].error, textarea.error {
-		border-color: $error_color;
+		border-color: $tomato;
 	}
 
 	input[type="submit"] {
 		float: left;
 		width: 120px;
 		padding: 2px;
+		line-height: 28px;
+		border: none;
+		background: $denim;
+		color: $white;
+		border-radius: 8px;
 	}
 
 	select {
@@ -93,7 +99,7 @@ fieldset.city_entry {
 	margin-right: 20px;
 
 	.chosen-single {
-		border-color: $safety_blue_link;
+		border-color: $heather;
 		height: 32px;
 		width: 100%;
 		line-height: 32px;
@@ -105,7 +111,7 @@ fieldset.city_entry {
 
     &.chosen-with-drop {
 		.chosen-single div b {
-			background-position: -29px 1px;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%23394a59'%3E%3Cpolygon points='200,60 10,250 390,250' class='triangle' /%3E%3C/svg%3E") 3px 11px / 12px no-repeat;
 		}
 	}
 
@@ -116,21 +122,39 @@ fieldset.city_entry {
 	}
 
 	.chosen-drop {
-		border-color: $safety_blue_link;
+		border-color: $heather;
 		margin-top: -4px;
 		padding-top: 4px;
 	}
 
 	&.error {
 		a {
-			border-color: $error_color;
-			color: $error_color;
+			border-color: $tomato;
+			color: $tomato;
 		}
 		.chosen-drop {
-			border-color: $error_color;
+			border-color: $tomato;
 		}
     	&.chosen-with-drop .chosen-single {
-			border-color: $error_color;
+			border-color: $tomato;
 		}
 	}
+}
+
+.chosen-container-single {
+	.chosen-single {
+		background: $white;
+		div {
+			width: 24px;
+			b {
+				background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%230079b6'%3E%3Cpolygon points='200,250 10,60 390,60' class='triangle' /%3E%3C/svg%3E") 3px 11px / 12px no-repeat;
+			}
+		}
+	}
+	.chosen-search {
+		margin-bottom: 4px;
+	}
+}
+.chosen-container-single.error .chosen-single div b {
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%23c23a28'%3E%3Cpolygon points='200,250 10,60 390,60' class='triangle' /%3E%3C/svg%3E") 3px 11px / 12px no-repeat;
 }
