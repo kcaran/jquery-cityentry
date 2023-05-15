@@ -224,63 +224,6 @@ Add the correct display in Chrome and Safari.
 summary {
   display: list-item; }
 
-*, *:before, *:after {
-  box-sizing: border-box; }
-
-body {
-  font-family: arial, helvetica, sans-serif;
-  line-height: 26px;
-  color: #394a59;
-  margin: 20px; }
-
-main {
-  width: 600px;
-  margin: auto; }
-  main ul {
-    margin-top: 0;
-    padding: 0 0 0 20px; }
-  main li {
-    margin-bottom: 10px;
-    padding-left: 10px; }
-  main pre {
-    font-size: 14px; }
-
-form {
-  margin: auto;
-  width: 620px; }
-  form .error, form .highlight_error {
-    color: #c23a28; }
-  form input[type="text"], form input[type="tel"] {
-    padding: 3px 8px 4px;
-    border: 1px solid #0079b6;
-    border-radius: 4px; }
-  form input[type="text"].error, form input[type="tel"].error, form textarea.error {
-    border-color: #c23a28; }
-  form input[type="submit"] {
-    float: left;
-    width: 120px;
-    padding: 2px;
-    line-height: 28px;
-    border: none;
-    background: #0079b6;
-    color: #ffffff;
-    border-radius: 8px; }
-  form select {
-    padding: 1px; }
-
-fieldset.city_entry {
-  float: left;
-  width: 420px;
-  border: 0;
-  margin: 0;
-  padding: 0; }
-  fieldset.city_entry select.state_list {
-    width: 70px;
-    margin-right: 20px; }
-  fieldset.city_entry .city_input, fieldset.city_entry select.city_list {
-    width: 300px;
-    margin-right: 20px; }
-
 .chosen-container {
   font-size: 16px;
   max-width: 300px;
@@ -330,3 +273,63 @@ fieldset.city_entry {
 
 .chosen-container-single.error .chosen-single div b {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%23c23a28'%3E%3Cpolygon points='200,250 10,60 390,60' class='triangle' /%3E%3C/svg%3E") 3px 11px/12px no-repeat; }
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+body {
+  font-family: arial, helvetica, sans-serif;
+  line-height: 26px;
+  color: #394a59;
+  margin: 20px; }
+
+main {
+  width: 600px;
+  margin: auto; }
+  main ul {
+    margin-top: 0;
+    padding: 0 0 0 20px; }
+  main li {
+    margin-bottom: 10px;
+    padding-left: 10px; }
+  main pre {
+    font-size: 14px; }
+
+form {
+  margin: auto;
+  width: 620px; }
+  form .error, form .highlight_error {
+    color: #c23a28; }
+  form input[type="text"], form input[type="tel"] {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 8px;
+    border: 1px solid #0079b6;
+    border-radius: 4px;
+    line-height: 30px; }
+  form input[type="text"].error, form input[type="tel"].error, form textarea.error {
+    border-color: #c23a28; }
+  form input[type="submit"] {
+    float: left;
+    width: 120px;
+    padding: 2px;
+    line-height: 28px;
+    border: none;
+    background: #0079b6;
+    color: #ffffff;
+    border-radius: 8px; }
+  form select {
+    padding: 1px; }
+
+fieldset.city_entry {
+  float: left;
+  width: 420px;
+  border: 0;
+  margin: 0;
+  padding: 0; }
+  fieldset.city_entry select.state_list {
+    width: 70px;
+    margin-right: 20px; }
+  fieldset.city_entry .city_input, fieldset.city_entry select.city_list {
+    width: 300px;
+    margin-right: 20px; }
