@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>jquery.cityentry.js - Select City and State using chosen.js</title>
 <!-- $Id: index.html,v 1.3 2014/05/07 17:52:09 caran Exp $ -->
 <link href="css/chosen.min.css" rel="stylesheet" type="text/css">
@@ -10,14 +11,14 @@
 
 <body>
 
-<div class="main">
+<main role="main">
 
 <h1>CityEntry jQuery plugin</h1>
 
 <p>
 This is a jQuery plugin for selecting a state and city.  For Massachusetts
 and New Hampshire, the user selects a city from a dropdown list. For all
-other states, they can free-key the city. 
+other states, they can free-key the city.
 </p>
 
 <p>
@@ -30,8 +31,8 @@ The plugin relies on Chosen, a jQuery plugin that makes select boxes more user-f
 <select class="state_list" id="ad_locstate" name="ad_locstate">
   <option>MA</option> <option>NH</option> <option>AK</option> <option>AL</option> <option>AR</option> <option>AZ</option> <option>CA</option> <option>CN</option> <option>CO</option> <option>CT</option> <option>DC</option> <option>DE</option> <option>FL</option> <option>GA</option> <option>HI</option> <option>IA</option> <option>ID</option> <option>IL</option> <option>IN</option> <option>KS</option> <option>KY</option> <option>LA</option> <option>MA</option> <option>MD</option> <option>ME</option> <option>MI</option> <option>MN</option> <option>MO</option> <option>MS</option> <option>MT</option> <option>NC</option> <option>ND</option> <option>NE</option> <option>NH</option> <option>NJ</option> <option>NM</option> <option>NV</option> <option>NY</option> <option>OH</option> <option>OK</option> <option>OR</option> <option>PA</option> <option>PR</option> <option>RI</option> <option>SC</option> <option>SD</option> <option>TN</option> <option>TX</option> <option>UT</option> <option>VA</option> <option>VT</option> <option>WA</option> <option>WI</option> <option>WV</option> <option>WY</option>
 </select>
-<select class="city_list" id="ad_loccityname" name="ad_loccityname">
-     <option>Choose a city</option>
+<select data-placeholder="Choose a city…" class="chosen-select city_list" id="ad_loccityname" name="ad_loccityname">
+     <option></option>
 </select>
 <input style="display: none" type="text" class="city_input" id="ad_loccity" name="ad_loccity" placeholder="Enter non-MA/NH city">
 </fieldset>
@@ -73,15 +74,17 @@ $ npm run build
 <li><a href="https://github.com/kcaran/jquery-cityentry">Github repository</a></li>
 <li><a href="https://harvesthq.github.io/chosen/">Chosen project</a></li>
 <li><a href="https://jqueryvalidation.org/">jQuery Validation</a></li>
-</div>
+</ul>
 
-<script type="text/javascript" src="scripts/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="scripts/jquery.validate.min.1.19.5.js"></script>
-<script type="text/javascript" src="chosen.jquery.min.js"></script>
-<script type="text/javascript" src="cities.js"></script>
-<script type="text/javascript" src="jquery.cityentry.js"></script>
+</main>
 
-<script type="text/javascript">
+<script src="scripts/jquery-3.7.0.min.js"></script>
+<script src="scripts/jquery.validate.min.1.19.5.js"></script>
+<script src="chosen.jquery.min.js"></script>
+<script src="cities.js"></script>
+<script src="jquery.cityentry.js"></script>
+
+<script>
 var labelErrorClass = 'highlight_error';
 
 function get_init_data()

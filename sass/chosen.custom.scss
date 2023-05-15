@@ -21,7 +21,7 @@ body {
 	margin: 20px;
 }
 
-.main {
+main {
 	width: 600px;
 	margin: auto;
 
@@ -112,7 +112,7 @@ fieldset.city_entry {
 
     &.chosen-with-drop {
 		.chosen-single div b {
-			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%23394a59'%3E%3Cpolygon points='200,60 10,250 390,250' class='triangle' /%3E%3C/svg%3E") 3px 11px / 12px no-repeat;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%230079b6'%3E%3Cpolygon points='200,60 10,250 390,250' class='triangle' /%3E%3C/svg%3E") 3px 11px / 12px no-repeat;
 		}
 	}
 
@@ -137,7 +137,7 @@ fieldset.city_entry {
 	&.error {
 		a {
 			border-color: $tomato;
-			color: $tomato;
+			color: $tomato !important;
 		}
 		.chosen-drop {
 			border-color: $tomato;
@@ -158,6 +158,9 @@ fieldset.city_entry {
 				background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='400' width='400' fill='%230079b6'%3E%3Cpolygon points='200,250 10,60 390,60' class='triangle' /%3E%3C/svg%3E") 3px 11px / 12px no-repeat;
 			}
 		}
+	}
+	.chosen-single.chosen-default {
+		color: $denim;
 	}
 	.chosen-search {
 		margin-bottom: 4px;
