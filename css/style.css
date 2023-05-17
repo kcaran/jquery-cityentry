@@ -230,9 +230,10 @@ summary {
   margin-right: 20px; }
   .chosen-container .chosen-single {
     border-color: #aec2cb;
-    height: 32px;
-    width: 100%;
-    line-height: 32px; }
+    height: 36px;
+    width: 100%; }
+    .chosen-container .chosen-single span {
+      line-height: 34px; }
     .chosen-container .chosen-single div b {
       background-position: -1px 0px; }
   .chosen-container.chosen-with-drop .chosen-single div b {
@@ -300,24 +301,25 @@ form {
   width: 620px; }
   form .error, form .highlight_error {
     color: #c23a28; }
-  form input[type="text"], form input[type="tel"] {
+  form input[type="text"], form input[type="password"] {
     display: inline-block;
     vertical-align: middle;
     padding: 0px 8px;
     border: 1px solid #0079b6;
     border-radius: 4px;
-    line-height: 30px; }
-  form input[type="text"].error, form input[type="tel"].error, form textarea.error {
+    line-height: 34px; }
+  form input[type="text"].error, form input[type="password"].error, form textarea.error {
     border-color: #c23a28; }
   form input[type="submit"] {
     float: left;
     width: 120px;
-    padding: 2px;
-    line-height: 28px;
-    border: none;
+    line-height: 32px;
+    border: 1px solid #0079b6;
     background: #0079b6;
     color: #ffffff;
-    border-radius: 8px; }
+    border-radius: 50px; }
+    form input[type="submit"]:hover {
+      background: #0085c8; }
   form select {
     padding: 1px; }
 

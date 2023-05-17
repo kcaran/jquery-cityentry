@@ -5,10 +5,11 @@
 
 	.chosen-single {
 		border-color: $heather;
-		height: 32px;
+		height: 36px;
 		width: 100%;
-		line-height: 32px;
-
+		span {
+			line-height: 34px;
+		}
 		& div b {
 			background-position: -1px 0px;
 		}

@@ -3,6 +3,7 @@ $normalize-vertical-rhythm: true;
 
 $charcoal: #394a59;
 $denim: #0079b6;
+$raceway: #0085c8;
 $heather: #aec2cb;
 $shuttle: #51626f;
 $tomato: #c23a28;
@@ -50,28 +51,30 @@ form {
 		color: $tomato;
 	}
 
-	input[type="text"], input[type="tel"] {
+	input[type="text"], input[type="password"] {
 		display: inline-block;
 		vertical-align: middle;
 		padding: 0px 8px;
 		border: 1px solid $denim;
 		border-radius: 4px;
-		line-height: 30px;
+		line-height: 34px;
 	}
 
-	input[type="text"].error, input[type="tel"].error, textarea.error {
+	input[type="text"].error, input[type="password"].error, textarea.error {
 		border-color: $tomato;
 	}
 
 	input[type="submit"] {
 		float: left;
 		width: 120px;
-		padding: 2px;
-		line-height: 28px;
-		border: none;
+		line-height: 32px;
+		border: 1px solid $denim;
 		background: $denim;
 		color: $white;
-		border-radius: 8px;
+		border-radius: 50px;
+		&:hover {
+			background: $raceway;
+		}
 	}
 
 	select {
