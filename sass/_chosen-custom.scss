@@ -24,8 +24,7 @@
 	.chosen-results {
 		color: $shuttle;
 		li {
-			padding-top: 0;
-			padding-bottom: 0;
+			padding: 4px 6px;
 			line-height: 1.65em;
 			&.highlighted {
 				background: $denim;

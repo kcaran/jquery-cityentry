@@ -241,8 +241,7 @@ summary {
   .chosen-container .chosen-results {
     color: #51626f; }
     .chosen-container .chosen-results li {
-      padding-top: 0;
-      padding-bottom: 0;
+      padding: 4px 6px;
       line-height: 1.65em; }
       .chosen-container .chosen-results li.highlighted {
         background: #0079b6; }
