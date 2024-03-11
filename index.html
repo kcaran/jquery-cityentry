@@ -16,9 +16,9 @@
 <h1>CityEntry jQuery plugin</h1>
 
 <p>
-This is a jQuery plugin for selecting a state and city.  For Massachusetts
-and New Hampshire, the user selects a city from a dropdown list. For all
-other states, they can free-key the city.
+This is a jQuery plugin for selecting a state and city.  
+For Massachusetts, Maine, and New Hampshire, the user selects a city
+from a dropdown list. For all other states, they can free-key the city.
 </p>
 
 <p>
@@ -29,12 +29,12 @@ The plugin relies on Chosen, a jQuery plugin that makes select boxes more user-f
 
 <fieldset class="city_entry">
 <select class="state_list" id="ad_locstate" name="ad_locstate">
-  <option>MA</option> <option>NH</option> <option>AK</option> <option>AL</option> <option>AR</option> <option>AZ</option> <option>CA</option> <option>CN</option> <option>CO</option> <option>CT</option> <option>DC</option> <option>DE</option> <option>FL</option> <option>GA</option> <option>HI</option> <option>IA</option> <option>ID</option> <option>IL</option> <option>IN</option> <option>KS</option> <option>KY</option> <option>LA</option> <option>MA</option> <option>MD</option> <option>ME</option> <option>MI</option> <option>MN</option> <option>MO</option> <option>MS</option> <option>MT</option> <option>NC</option> <option>ND</option> <option>NE</option> <option>NH</option> <option>NJ</option> <option>NM</option> <option>NV</option> <option>NY</option> <option>OH</option> <option>OK</option> <option>OR</option> <option>PA</option> <option>PR</option> <option>RI</option> <option>SC</option> <option>SD</option> <option>TN</option> <option>TX</option> <option>UT</option> <option>VA</option> <option>VT</option> <option>WA</option> <option>WI</option> <option>WV</option> <option>WY</option>
+  <option>MA</option> <option>ME</option> <option>NH</option> <option>AK</option> <option>AL</option> <option>AR</option> <option>AZ</option> <option>CA</option> <option>CN</option> <option>CO</option> <option>CT</option> <option>DC</option> <option>DE</option> <option>FL</option> <option>GA</option> <option>HI</option> <option>IA</option> <option>ID</option> <option>IL</option> <option>IN</option> <option>KS</option> <option>KY</option> <option>LA</option> <option>MA</option> <option>MD</option> <option>ME</option> <option>MI</option> <option>MN</option> <option>MO</option> <option>MS</option> <option>MT</option> <option>NC</option> <option>ND</option> <option>NE</option> <option>NH</option> <option>NJ</option> <option>NM</option> <option>NV</option> <option>NY</option> <option>OH</option> <option>OK</option> <option>OR</option> <option>PA</option> <option>PR</option> <option>RI</option> <option>SC</option> <option>SD</option> <option>TN</option> <option>TX</option> <option>UT</option> <option>VA</option> <option>VT</option> <option>WA</option> <option>WI</option> <option>WV</option> <option>WY</option>
 </select>
 <select data-placeholder="Choose a city…" class="chosen-select city_list" id="ad_loccityname" name="ad_loccityname">
      <option></option>
 </select>
-<input style="display: none" type="text" class="city_input" id="ad_loccity" name="ad_loccity" placeholder="Enter non-MA/NH city">
+<input style="display: none" type="text" class="city_input" id="ad_loccity" name="ad_loccity" placeholder="Enter non-MA/ME/NH city">
 </fieldset>
 
 <input type="submit" value="submit">
@@ -73,6 +73,7 @@ $ npm run build
 <ul>
 <li><a href="https://github.com/kcaran/jquery-cityentry">Github repository</a></li>
 <li><a href="https://harvesthq.github.io/chosen/">Chosen project</a></li>
+<li><a href="https://github.com/kcaran/chosen/">My fork for Chosen</a></li>
 <li><a href="https://jqueryvalidation.org/">jQuery Validation</a></li>
 </ul>
 
@@ -92,7 +93,7 @@ function get_init_data()
   var city, state;
 
   if (state = GetURLParameter( 'ad_locstate' )) {
-    if (state === 'MA' || state === 'NH') {
+    if (state === 'MA' || state == 'ME' || state === 'NH') {
       city = GetURLParameter( 'ad_loccityname' );
     }
     else {
@@ -103,6 +104,7 @@ function get_init_data()
 
   // Here are some test initial data sets
   return { "city" : '', "state" : '' };
+  return { "city" : "NEWPORT", "state": "ME" };
   return { "city" : "NEW BOSTON", "state": "NH" };
   return { "city" : "CAMBRIDGE", "state": "MA" };
   return { "city" : "Juneau", "state": "AK" };

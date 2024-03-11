@@ -18,6 +18,9 @@
       if (state === 'MA') {
         city_list = ma_cities;
       }
+      else if (state === 'ME') {
+        city_list = me_cities;
+      }
       else if (state === 'NH') {
         city_list = nh_cities;
       }
@@ -51,7 +54,7 @@
     }
 
     $obj.children( 'select.state_list' ).val( state ).change();
-    if (state === 'MA' || state === 'NH') {
+    if (state === 'MA' || state == 'ME' || state === 'NH') {
       $obj.children( 'select.city_list' ).val( city ).change().trigger( 'chosen:updated' );
     }
     else {
@@ -62,7 +65,7 @@
   function is_ma_nh( element )
    {
     var value = $( element ).siblings( 'select.state_list' ).val();
-    return (value === 'MA' || value === 'NH');
+    return (value === 'MA' || state == 'ME' || value === 'NH');
    }
 
   function load_cities( cityentryObj, list )
@@ -75,7 +78,7 @@
       option_html.push( '<option>', list[i], '</option>' );
     }
     if (!option_html.length) {
-      option_html.push( '<option>Non MA/NH Location</option>' );
+      option_html.push( '<option>Non MA/ME/NH Location</option>' );
       disabled = true;
     }
 
